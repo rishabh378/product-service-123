@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Slf4j
@@ -44,5 +45,27 @@ public class ProductController {
 
         return stringStream;
     }
+     public Optional<String> method() {
+         Optional<String> stringOptional = Optional.of("hello");
 
+         if(stringOptional.isPresent()) {
+             return stringOptional;
+         }else {
+            return Optional.empty();
+         }
+     }
+
+     public void xyz(){
+         Optional<String> optional = method();
+         if(optional.isPresent()) {
+             String data = optional.get();
+             System.out.println(data);
+
+         }
+
+     }
+
+     public Optional<String> nullable(String data) {
+        return Optional.ofNullable(data);
+     }
 }
